@@ -7,7 +7,7 @@ const prettierOptions = JSON.parse(
 
 module.exports = {
   extends: ['react-app', 'prettier', 'prettier/react'],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'react', 'react-hooks', '@typescript-eslint'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
   },
