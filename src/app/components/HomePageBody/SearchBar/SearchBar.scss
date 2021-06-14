@@ -1,0 +1,18 @@
+.searchbar-wrapper {
+    background-color: #f5f5f5;
+    padding: 20px;
+
+    .searchbar__select {
+        flex: 1;
+        margin: 10px;
+    }
+
+    button {
+        flex: 0.5;
+        margin-left: 10px;
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+}

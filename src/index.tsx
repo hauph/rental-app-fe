@@ -12,6 +12,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+// CSS Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
 

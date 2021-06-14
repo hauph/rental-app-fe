@@ -1,0 +1,33 @@
+.body-wrapper {
+    .item-list {
+        padding-right: 0;
+        
+        .toggle__btns {
+            margin: 20px 0px;
+
+            button {
+                &:nth-child(1) {
+                    border-left: none;
+                }
+                background: none;
+                border: 1px solid;
+            }
+
+            &.style--grid {
+                .btn--grid {
+                    background: black;
+                    color: white;
+                    border: none;
+                }
+            }
+
+            &.style--list {
+                .btn--list {
+                    background: black;
+                    color: white;
+                    border: none;
+                }
+            }
+        }
+    }
+}
