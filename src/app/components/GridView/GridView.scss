@@ -1,0 +1,80 @@
+.style--grid {
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    .item-wrapper {
+        flex: 0 0 33.333333%;
+        padding: 15px;
+
+        &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+            padding-top: 0;
+        }
+
+        .item__head {
+            .item__image {
+                overflow: hidden;
+                position: relative;
+                margin: 0 auto;
+                padding: 0;
+                text-align: center;
+
+                .featured-img {
+                    overflow: hidden;
+                    position: relative;
+                    text-align: center;
+                    margin: 0 auto;
+
+                    a {
+                        display: block;
+                        
+                        div {
+                            height: 300px;
+
+                            img {
+                                width: 100%;
+                                -moz-transition: filter .6s,opacity .6s,transform .6s,box-shadow .3s;
+                                -o-transition: filter .6s,opacity .6s,transform .6s,box-shadow .3s;
+                                -webkit-transition: filter .6s,opacity .6s,transform .6s,box-shadow .3s;
+                                transition: filter .6s,opacity .6s,transform .6s,box-shadow .3s;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .item__btns {
+                position: absolute;
+                display: block;
+                left: 10px;
+                top: 10px;
+
+                button {
+                    border: none;
+                    margin-bottom: 5px;
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    -webkit-transform: translate(-50px,0);
+                    -ms-transform: translate(-50px,0);
+                    -o-transform: translate(-50px,0);
+                    transform: translate(-50px,0);
+                    -moz-transition: all .45s ease 0s;
+                    -o-transition: all .45s ease 0s;
+                    -webkit-transition: all .45s ease 0s;
+                    transition: all .45s ease 0s;
+                }
+            }
+        }
+
+        &:hover {
+            .item__btns {
+                button {
+                    -webkit-transform: translate(0,0);
+                    -ms-transform: translate(0,0);
+                    -o-transform: translate(0,0);
+                    transform: translate(0,0);
+                }
+            }
+        }
+    }
+}

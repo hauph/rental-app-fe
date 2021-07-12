@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import './scss/root.scss';
+import './scss/style.scss';
 
 export const GlobalStyle = createGlobalStyle`
   html,

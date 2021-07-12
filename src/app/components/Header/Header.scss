@@ -22,7 +22,7 @@
 
 .header-wrapper {
     .header__top {
-        background-color: #f5f5f5;
+        background-color: var(--primary);
         padding: 10px 0;
         
         .top__contact {
@@ -84,5 +84,4 @@
             }
         }
     }
-
 }

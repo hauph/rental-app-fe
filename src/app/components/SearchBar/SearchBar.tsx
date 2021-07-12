@@ -72,8 +72,8 @@ export default class SearchBar extends React.Component<Props, State> {
     stateOptions.unshift({ value: 'none', label: '...' });
 
     return (
-      <div className="searchbar-wrapper container">
-        <h5>Tìm kiếm nhanh</h5>
+      <div className="searchbar-wrapper">
+        <h4>Tìm kiếm nhanh</h4>
         <form
           id="searchbar"
           className="d-flex align-items-center"

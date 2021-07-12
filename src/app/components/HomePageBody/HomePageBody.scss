@@ -1,6 +1,6 @@
 .body-wrapper {
-    .item-list {
-        padding-right: 0;
+    .items-wrapper {
+        padding: 0;
         
         .toggle__btns {
             margin: 20px 0px;
@@ -28,6 +28,10 @@
                     border: none;
                 }
             }
+        }
+
+        .btn--load-more {
+            margin: 20px 0;
         }
     }
 }

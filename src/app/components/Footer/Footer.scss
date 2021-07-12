@@ -1,0 +1,12 @@
+.footer-wrapper {
+    background-color: var(--primary);
+    padding: 20px 0;
+
+    p {
+        color: #000;
+
+        &:nth-child(2) {
+            margin-bottom: 0;
+        }
+    }
+}
