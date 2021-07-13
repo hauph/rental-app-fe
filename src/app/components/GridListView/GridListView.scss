@@ -3,7 +3,6 @@
     margin: 0 -15px;
 
     .item-wrapper {
-        flex: 0 0 33.333333%;
         padding: 15px;
 
         &:nth-child(1), &:nth-child(2), &:nth-child(3) {
@@ -54,14 +53,30 @@
                     display: block;
                     width: 30px;
                     height: 30px;
-                    -webkit-transform: translate(-50px,0);
-                    -ms-transform: translate(-50px,0);
-                    -o-transform: translate(-50px,0);
-                    transform: translate(-50px,0);
-                    -moz-transition: all .45s ease 0s;
-                    -o-transition: all .45s ease 0s;
-                    -webkit-transition: all .45s ease 0s;
                     transition: all .45s ease 0s;
+                    background-color: var(--secondary);
+
+                    @media (min-width: 1200px) {
+                        -webkit-transform: translate(-50px,0);
+                        -ms-transform: translate(-50px,0);
+                        -o-transform: translate(-50px,0);
+                        transform: translate(-50px,0);
+                        -moz-transition: all .45s ease 0s;
+                        -o-transition: all .45s ease 0s;
+                        -webkit-transition: all .45s ease 0s;
+                    } 
+
+                    path {
+                        fill: var(--white);
+                    }
+
+                    &:hover {
+                        background-color: var(--white);
+
+                        path {
+                            fill: var(--secondary);
+                        }
+                    }
                 }
             }
         }
@@ -74,6 +89,37 @@
                     -o-transform: translate(0,0);
                     transform: translate(0,0);
                 }
+            }
+        }
+
+        .item__content {
+            padding: 15px;
+
+            .item__name {
+                h5 {
+                    font-weight: 300 !important;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    a {
+                        text-decoration: none;
+                        color: var(--black);
+                        white-space: nowrap;
+                        -moz-transition: all .45s ease 0s;
+                        -o-transition: all .45s ease 0s;
+                        -webkit-transition: all .45s ease 0s;
+                        transition: all .45s ease 0s;   
+
+                        &:hover {
+                            opacity: 0.3;
+                        }
+                    }
+                }
+            }
+
+            .item__price {
+                font-size: 20px;
+                color: var(--secondary);
             }
         }
     }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import GridView from '../GridView/GridView';
-import ListView from '../ListView/ListView';
+import GridListView from '../GridListView/GridListView';
 import { faBorderNone, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactTooltip from 'react-tooltip';
@@ -47,9 +46,9 @@ export default function HomePageBody(props: Props) {
           </div>
           <div className="items-inner">
             {viewStyle === 'grid' ? (
-              <GridView listItem={items} />
+              <GridListView listItem={items} viewStyle={viewStyle} />
             ) : (
-              <ListView />
+              <GridListView listItem={items} viewStyle={viewStyle} />
             )}
           </div>
 
