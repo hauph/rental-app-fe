@@ -4,7 +4,6 @@ import SearchBar from '../SearchBar/SearchBar';
 import GridListView from '../GridListView/GridListView';
 import { faBorderNone, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ReactTooltip from 'react-tooltip';
 import { Button } from 'react-bootstrap';
 import './HomePageBody.scss';
 import { items } from './mock-data/mock-data';
@@ -13,6 +12,11 @@ type Props = {};
 
 export default function HomePageBody(props: Props) {
   const [viewStyle, setViewStyle] = useState<string>('grid');
+  const changeViewStyle = e => {
+    if (e.currentTarget.className.indexOf('active') === -1) {
+      setViewStyle(viewStyle === 'grid' ? 'list' : 'grid');
+    }
+  };
 
   return (
     <div className="container">
@@ -25,9 +29,11 @@ export default function HomePageBody(props: Props) {
             <button
               type="button"
               data-tip="Dạng lưới"
-              className="btn--grid"
-              onClick={() => {
-                setViewStyle(viewStyle === 'grid' ? 'list' : 'grid');
+              className={`btn-grid-list btn--grid${
+                viewStyle === 'grid' ? ' active' : ''
+              }`}
+              onClick={e => {
+                changeViewStyle(e);
               }}
             >
               <FontAwesomeIcon icon={faBorderNone} />
@@ -35,14 +41,15 @@ export default function HomePageBody(props: Props) {
             <button
               type="button"
               data-tip="Dạng danh sách"
-              className="btn--list"
-              onClick={() => {
-                setViewStyle(viewStyle === 'grid' ? 'list' : 'grid');
+              className={`btn-grid-list btn--list${
+                viewStyle === 'list' ? ' active' : ''
+              }`}
+              onClick={e => {
+                changeViewStyle(e);
               }}
             >
               <FontAwesomeIcon icon={faList} />
             </button>
-            <ReactTooltip />
           </div>
           <div className="items-inner">
             {viewStyle === 'grid' ? (

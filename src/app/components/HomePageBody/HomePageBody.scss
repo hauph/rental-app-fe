@@ -13,19 +13,12 @@
                 border: 1px solid;
             }
 
-            &.style--grid {
-                .btn--grid {
+            .btn-grid-list {
+                &.active {
                     background: black;
                     color: white;
                     border: none;
-                }
-            }
-
-            &.style--list {
-                .btn--list {
-                    background: black;
-                    color: white;
-                    border: none;
+                    cursor: not-allowed;
                 }
             }
         }
