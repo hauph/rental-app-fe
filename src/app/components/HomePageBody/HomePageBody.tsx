@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
+// import SearchBar from '../SearchBar/SearchBar';
 import GridListView from '../GridListView/GridListView';
 import { faBorderNone, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +21,7 @@ export default function HomePageBody(props: Props) {
   return (
     <div className="container">
       <div className="body-wrapper">
-        <SearchBar />
+        {/* <SearchBar /> */}
         <div className="items-wrapper">
           <div
             className={`toggle__btns d-flex flex-row-reverse style--${viewStyle}`}
