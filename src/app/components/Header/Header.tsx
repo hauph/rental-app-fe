@@ -19,7 +19,7 @@ export default class Header extends React.Component<Props, State> {
         <div className="header__bg">
           <img className="img-fluid" src={header_bg2} alt="" />
         </div>
-        <div className="header__wrapper">
+        <div className="header__top-wrapper">
           <div className="header__top">
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
@@ -43,6 +43,14 @@ export default class Header extends React.Component<Props, State> {
           </div>
           <NavBar />
         </div>
+
+        <div className="header__text">
+          <p className="font-2">Website đăng tin hiệu quả cao</p>
+          <p className="font-2">
+            Cho thuê phòng trọ, nhà trọ, share phòng nhanh chóng
+          </p>
+        </div>
+
         <div className="container header__search">
           <SearchBar />
         </div>

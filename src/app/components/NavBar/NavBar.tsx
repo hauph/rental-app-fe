@@ -9,7 +9,7 @@ type State = {};
 export default class NavBar extends React.Component<Props, State> {
   render() {
     return (
-      <div className="header__navbar">
+      <div className="header__navbar translate3d--000">
         <Nav
           activeKey="/home"
           onSelect={selectedKey => alert(`selected ${selectedKey}`)}

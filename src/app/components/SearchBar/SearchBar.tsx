@@ -72,7 +72,7 @@ export default class SearchBar extends React.Component<Props, State> {
     stateOptions.unshift({ value: 'none', label: '...' });
 
     return (
-      <div className="searchbar-wrapper">
+      <div className="searchbar-wrapper translate3d--000">
         <h4 className="white-text">Tìm kiếm nhanh</h4>
         <form
           id="searchbar"

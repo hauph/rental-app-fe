@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-// import SearchBar from '../SearchBar/SearchBar';
 import GridListView from '../GridListView/GridListView';
 import { faBorderNone, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +20,10 @@ export default function HomePageBody(props: Props) {
   return (
     <div className="container">
       <div className="body-wrapper">
-        {/* <SearchBar /> */}
+        <h1 className="body__title font-2 text-center">
+          Danh Sách Phòng Trọ, Nhà Cho Thuê
+        </h1>
+
         <div className="items-wrapper">
           <div
             className={`toggle__btns d-flex flex-row-reverse style--${viewStyle}`}
@@ -60,7 +62,7 @@ export default function HomePageBody(props: Props) {
           </div>
 
           <div className="text-center btn--load-more">
-            <Button variant="outline-primary">Load More</Button>
+            <Button variant="outline-danger">Load More</Button>
           </div>
         </div>
       </div>

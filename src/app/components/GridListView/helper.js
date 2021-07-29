@@ -10,6 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { numberWithCommas } from '../../../utils/helper';
 
+/**
+ * A factory function for rendering grid list items
+ *
+ * @export
+ * @param {array} list
+ * @param {object} [callbacks={}]
+ * @param {string} [type='grid']
+ * @return {} JSXElement
+ */
 export function gridListCreator(list, callbacks = {}, type = 'grid') {
   const renderImage = item => {
     return (
@@ -28,30 +37,33 @@ export function gridListCreator(list, callbacks = {}, type = 'grid') {
   const renderBtns = () => {
     return (
       <div className="item__btns">
-        <OverlayTrigger
-          placement="top"
-          overlay={<Tooltip className="custom-tooltip">Xem nhanh</Tooltip>}
-        >
-          <button className="btn-quick-view">
-            <FontAwesomeIcon icon={faEye} />
-          </button>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="top"
-          overlay={<Tooltip className="custom-tooltip">Wishlist</Tooltip>}
-        >
-          <button className="btn-wishlist" title="Wishlist">
-            <FontAwesomeIcon icon={faHeart} />
-          </button>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="top"
-          overlay={<Tooltip className="custom-tooltip">So sánh</Tooltip>}
-        >
-          <button className="btn-compare" title="So sánh">
-            <FontAwesomeIcon icon={faPlusSquare} />
-          </button>
-        </OverlayTrigger>
+        {['quick-view', 'wishlist', 'compare'].map(item => {
+          let label, classIcon;
+          switch (item) {
+            case 'quick-view':
+              label = 'Xem nhanh';
+              classIcon = faEye;
+              break;
+            case 'wishlist':
+              label = 'Wishlist';
+              classIcon = faHeart;
+              break;
+            default:
+              label = 'So sánh';
+              classIcon = faPlusSquare;
+          }
+          return (
+            <OverlayTrigger
+              key={item}
+              placement={`${type === 'grid' ? 'right' : 'top'}`}
+              overlay={<Tooltip className="custom-tooltip">{label}</Tooltip>}
+            >
+              <button className={`btn--${item}`}>
+                <FontAwesomeIcon icon={classIcon} />
+              </button>
+            </OverlayTrigger>
+          );
+        })}
       </div>
     );
   };
