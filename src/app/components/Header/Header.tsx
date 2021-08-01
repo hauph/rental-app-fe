@@ -36,7 +36,7 @@ export default class Header extends React.Component<Props, State> {
                 <div className="top__buttons">
                   <Button variant="link">Đăng nhập</Button>
                   <Button variant="link">Đăng ký</Button>
-                  <Button variant="danger">Đăng tin mới</Button>
+                  <Button variant="primary">Đăng tin mới</Button>
                 </div>
               </div>
             </div>

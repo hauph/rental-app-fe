@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import ReactTooltip from 'react-tooltip';
-import './HomePage.scss';
 import Header from '../../components/Header/Header';
 import HomePageBody from '../../components/HomePageBody/HomePageBody';
 import Footer from '../../components/Footer/Footer';
+import CompareFunction from '../../components/CompareFunction/CompareFunction';
 
 export function HomePage() {
   return (
@@ -16,6 +16,7 @@ export function HomePage() {
       <Header />
       <HomePageBody />
       <Footer />
+      <CompareFunction />
       <ReactTooltip />
     </>
   );

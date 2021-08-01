@@ -72,7 +72,11 @@ export function gridListCreator(list, callbacks = {}, type = 'grid') {
     return (
       <div className="item__name">
         <h5>
-          <a title={item.name} href={`/product?id=${item.property_id}`}>
+          <a
+            title={item.name}
+            href={`/product?id=${item.property_id}`}
+            className="font-2"
+          >
             {item.name}
           </a>
         </h5>

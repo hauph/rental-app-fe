@@ -1,0 +1,32 @@
+@import '../../../styles/scss/mixin.scss';
+
+.compare {
+    &.compare-wrapper {
+        @include position-fixed(n, 20px, 20px, n);
+    }
+
+    &__icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary);
+        position: relative;
+        cursor: pointer;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        @include multi-prefix((
+            border-radius: 50%,
+            box-shadow: 0 0 10px var(--primary),
+        ));
+
+        &:hover {
+            background-color: var(--primary-hover);
+        }
+
+        svg {
+            @include position-absolute(50%, n, n, 50%);
+            @include single-prefix(transform, translate(-50%, -50%));
+            path {
+                fill: var(--white);
+            }
+        }
+    }
+}

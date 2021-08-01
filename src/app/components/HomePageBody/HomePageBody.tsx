@@ -62,7 +62,7 @@ export default function HomePageBody(props: Props) {
           </div>
 
           <div className="text-center btn--load-more">
-            <Button variant="outline-danger">Load More</Button>
+            <Button variant="outline-primary">Load More</Button>
           </div>
         </div>
       </div>
