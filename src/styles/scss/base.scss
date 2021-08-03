@@ -25,3 +25,28 @@ h1, h2, h3, h4, h5, h6 {
 .translate3d--000 {
     @include single-prefix(transform, translate3d(0,0,0));
 }
+
+.btn {
+    transition: 0.25s;
+
+    &.btn-outline-primary {
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        border-radius: 1rem;
+
+        &:hover {
+            background-color: unset;
+            box-shadow: 0 0.5em 0.5em -0.4em var(--primary);
+            transform: translateY(-0.25em);
+        }
+
+        &:focus {
+            box-shadow: 0 0 10px 0px var(--primary);
+        }
+
+        &:active {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+    }
+}

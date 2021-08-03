@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'react-bootstrap';
 import './Header.scss';
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
-import header_bg2 from './header_bg2.jpg';
-// import header_bg from './header_bg.jpg';
+import header_bg4 from './header_bg4.jpg';
 
 type Props = {};
 
@@ -17,13 +16,13 @@ export default class Header extends React.Component<Props, State> {
     return (
       <div className="header">
         <div className="header__bg">
-          <img className="img-fluid" src={header_bg2} alt="" />
+          <img className="img-fluid" src={header_bg4} alt="" />
         </div>
         <div className="header__top-wrapper">
           <div className="header__top">
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
-                <div className="top__contact">
+                {/* <div className="top__contact">
                   <span className="contact--phone white-text">
                     <FontAwesomeIcon icon={faPhoneAlt} />
                     <span>(408) 753 7979</span>
@@ -32,16 +31,14 @@ export default class Header extends React.Component<Props, State> {
                     <FontAwesomeIcon icon={faEnvelope} />
                     <span>hello@thuenha.us</span>
                   </span>
-                </div>
+                </div> */}
                 <div className="top__buttons">
-                  <Button variant="link">Đăng nhập</Button>
-                  <Button variant="link">Đăng ký</Button>
-                  <Button variant="primary">Đăng tin mới</Button>
+                  <Button variant="outline-primary">Đăng tin mới</Button>
                 </div>
+                <NavBar />
               </div>
             </div>
           </div>
-          <NavBar />
         </div>
 
         <div className="header__text">

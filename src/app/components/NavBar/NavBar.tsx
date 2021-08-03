@@ -13,7 +13,6 @@ export default class NavBar extends React.Component<Props, State> {
         <Nav
           activeKey="/home"
           onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-          className="justify-content-center"
         >
           <Nav.Item>
             <Nav.Link href="/home">Trang chủ</Nav.Link>

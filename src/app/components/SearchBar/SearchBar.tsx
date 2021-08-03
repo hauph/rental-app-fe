@@ -119,7 +119,7 @@ export default class SearchBar extends React.Component<Props, State> {
             options={cityList}
           />
 
-          <Button variant="primary" type="submit">
+          <Button variant="outline-primary" type="submit">
             <FontAwesomeIcon icon={faSearch} />
             Tìm kiếm
           </Button>

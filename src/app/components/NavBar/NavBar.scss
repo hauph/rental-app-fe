@@ -2,10 +2,15 @@
 
 .header__navbar {
     padding: 20px 0;
-    background-color: rgba($color: #ffffff, $alpha: .3);
+    // background-color: rgba($color: #ffffff, $alpha: .3);
     
     .nav-item {
         margin: .5rem 1rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
         a {
             position: relative;
             color: var(--white);
@@ -21,7 +26,7 @@
                 ));
                 @include position-absolute(100%, n, n, 0);
                 width: 100%;
-                height: 1px;
+                height: 2px;
                 background: var(--white);
                 pointer-events: none;
             }
@@ -36,12 +41,10 @@
             }
 
             &.active {
-                color: var(--white);
-                background-color: rgba($color: #0d6efd, $alpha: .7);
-                padding: 0 20px;
+                color: var(--primary);
 
                 &::before {
-                    background: var(--white);
+                    background: var(--primary);
                 }
             }
         }
