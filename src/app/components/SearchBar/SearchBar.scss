@@ -1,8 +1,7 @@
 @import '../../../styles/scss/mixin.scss';
 
 .searchbar-wrapper {
-    background-color: rgba($color: #ffffff, $alpha: .3);
-    padding: 20px;
+    position: relative;
 
     #searchbar {
         @media (max-width: 992px) {
@@ -16,6 +15,17 @@
         .searchbar__select {
             @include single-prefix(flex, 1);
             margin: 10px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            & > div {
+                z-index: 9;
+                &:first-of-type {
+                    border-radius: 50px;
+                }
+            }
         }
     
         button {

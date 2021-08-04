@@ -1,11 +1,9 @@
 import * as React from 'react';
-// import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'react-bootstrap';
 import './Header.scss';
 import NavBar from '../NavBar/NavBar';
-import SearchBar from '../SearchBar/SearchBar';
-import header_bg4 from './header_bg4.jpg';
+// import SearchBar from '../SearchBar/SearchBar';
+// import header_bg4 from './header_bg4.jpg';
 
 type Props = {};
 
@@ -15,9 +13,9 @@ export default class Header extends React.Component<Props, State> {
   render() {
     return (
       <div className="header">
-        <div className="header__bg">
+        {/* <div className="header__bg">
           <img className="img-fluid" src={header_bg4} alt="" />
-        </div>
+        </div> */}
         <div className="header__top-wrapper">
           <div className="header__top">
             <div className="container">
@@ -41,15 +39,16 @@ export default class Header extends React.Component<Props, State> {
           </div>
         </div>
 
-        <div className="header__text">
-          <p className="font-2">Website đăng tin hiệu quả cao</p>
-          <p className="font-2">
-            Cho thuê phòng trọ, nhà trọ, share phòng nhanh chóng
-          </p>
-        </div>
-
-        <div className="container header__search">
-          <SearchBar />
+        <div className="header__text-search">
+          <p className="font-2">Tìm nhà không khó</p>
+          <div className="header__search">
+            <form>
+              <input type="text" placeholder="Nhập nơi bạn muốn tìm kiếm" />
+              <button type="submit">
+                <span className="svg-icon-search"></span>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );

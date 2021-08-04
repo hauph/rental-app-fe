@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Select from 'react-select';
 import { Button } from 'react-bootstrap';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './SearchBar.scss';
 import { mockData } from './mock-data/mock-data'; // Mock-data
 import { SelectOption } from './SearchBar.d';
@@ -73,7 +71,6 @@ export default class SearchBar extends React.Component<Props, State> {
 
     return (
       <div className="searchbar-wrapper translate3d--000">
-        <h4 className="white-text font-2">Tìm kiếm nhanh</h4>
         <form
           id="searchbar"
           className="d-flex align-items-center"
@@ -119,9 +116,12 @@ export default class SearchBar extends React.Component<Props, State> {
             options={cityList}
           />
 
-          <Button variant="outline-primary" type="submit">
-            <FontAwesomeIcon icon={faSearch} />
-            Tìm kiếm
+          <Button
+            variant="outline-primary"
+            type="submit"
+            className="custom-btn"
+          >
+            Tìm kiếm ...
           </Button>
         </form>
       </div>
