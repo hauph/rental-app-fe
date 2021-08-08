@@ -19,7 +19,7 @@ import { numberWithCommas } from '../../../utils/helper';
  * @param {string} [type='grid']
  * @return {} JSXElement
  */
-export function gridListCreator(list, callbacks = {}, type = 'grid') {
+export function gridListBuilder(list, callbacks = {}, type = 'grid') {
   const renderImage = item => {
     return (
       <div className="item__image">
@@ -109,17 +109,15 @@ export function gridListCreator(list, callbacks = {}, type = 'grid') {
       className="item-wrapper col-xl-4 col-md-6 col-sm-12"
       key={item.property_id}
     >
-      <div className="card">
-        <div className="item__head">
-          {renderImage(item)}
-          {renderBtns(item)}
-        </div>
-        <div className="item__content text-left">
-          <div className="content">
-            {renderName(item)}
-            {renderLocaltion(item)}
-            {renderPrice(item)}
-          </div>
+      <div className="item__head">
+        {renderImage(item)}
+        {renderBtns(item)}
+      </div>
+      <div className="item__content text-left">
+        <div className="content">
+          {renderName(item)}
+          {renderLocaltion(item)}
+          {renderPrice(item)}
         </div>
       </div>
     </div>

@@ -1,0 +1,28 @@
+@import '../../../styles/scss/mixin.scss';
+
+.sidebar {
+    .card {
+        margin-bottom: 20px;
+
+        .card-title {
+            color: var(--third);
+        }
+        
+        li {
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: var(--light-color);
+                @include single-prefix(transition, all 0.45s ease 0s);
+        
+                &:hover {
+                    color: var(--secondary);
+                }
+            }
+        }
+    }
+}

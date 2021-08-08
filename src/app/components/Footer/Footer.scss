@@ -1,12 +1,25 @@
 .footer-wrapper {
     background-color: var(--black);
     padding: 20px 0;
+    
+    .contact {
+        &--phone {
+            margin-right: 20px;
+        }
+    }
 
     p {
         color: var(--white);
 
-        &:nth-child(2) {
+        &:last-child {
             margin-bottom: 0;
+        }
+
+        svg {
+            margin-right: 10px;
+            path {
+                fill: var(--primary);
+            }
         }
     }
 }

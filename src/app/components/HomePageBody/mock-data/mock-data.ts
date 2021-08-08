@@ -1,5 +1,3 @@
-/// <reference path = "mock-data.d.ts" />
-
 export const items = [
   {
     property_id: 'abc',

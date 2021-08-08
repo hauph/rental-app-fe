@@ -37,7 +37,7 @@
 }
 
 .item-wrapper {
-    padding: 15px;
+    padding: 10px;
 
     &:nth-child(1), &:nth-child(2), &:nth-child(3) {
         padding-top: 0;
@@ -57,6 +57,8 @@
                 position: relative;
                 text-align: center;
                 margin: 0 auto;
+                height: 200px;
+                border-radius: 10px;
 
                 a {
                     display: block;
@@ -89,7 +91,7 @@
     }
 
     .item__content {
-        padding: 15px;
+        padding: 15px 0;
 
         .item__name {
             h5 {
@@ -137,16 +139,21 @@
 
 .style--list {
     .item-wrapper {
-        padding: 15px;
-        border: 1px solid lightgray;
-        margin-bottom: 20px;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border);
+
+        &:first-child {
+            border-top: 1px solid var(--border);
+        }
 
         .item__image {
             .featured-img { 
                 a {
                     div {
-                        width: 300px;
-                        height: 300px;
+                        width: 150px;
+                        height: 150px;
+                        overflow: hidden;
+                        border-radius: 10px;
     
                         img {
                             width: 100%;
@@ -156,6 +163,14 @@
                             margin: 0 auto;
                             object-fit: cover;
                             -o-object-fit: cover;
+                            border-radius: 10px;
+                            @include single-prefix(transition, .35s ease);
+                        }
+
+                        &:hover {
+                            img {
+                                @include single-prefix(transform, scale(1.2,1.2));
+                            }
                         }
                     }
                 }
@@ -163,7 +178,7 @@
         }
         .item__content {
             @include single-prefix(flex, 1);
-            padding-top: 0px;
+            padding: 0px 15px 15px 15px;
 
             .content {
                 &__left {

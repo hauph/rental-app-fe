@@ -14,14 +14,13 @@
 
         .searchbar__select {
             @include single-prefix(flex, 1);
-            margin: 10px;
+            margin: 0 10px;
 
             &:first-child {
                 margin-left: 0;
             }
 
             & > div {
-                z-index: 9;
                 &:first-of-type {
                     border-radius: 50px;
                 }

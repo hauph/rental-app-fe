@@ -33,7 +33,13 @@
             }
     
             .btn--load-more {
-                margin: 20px 0 40px 0;
+                margin: -10px 0 40px 0;
+            }
+
+            &.style--list {
+                .btn--load-more {
+                    margin-top: 20px;
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import GridListView from '../GridListView/GridListView';
 import SearchBar from '../SearchBar/SearchBar';
+import { Sidebar } from '../Sidebar/Sidebar';
 import { faBorderNone, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Col } from 'react-bootstrap';
@@ -23,14 +24,9 @@ export default function HomePageBody(props: Props) {
       <div className="container">
         <div className="body-wrapper row">
           <Col lg={9} md={12}>
-            {/* <h1 className="body__title font-2 text-center">
-            Danh Sách Phòng Trọ, Nhà Cho Thuê
-          </h1> */}
             <SearchBar />
-            <div className="items-wrapper">
-              <div
-                className={`toggle__btns d-flex flex-row-reverse style--${viewStyle}`}
-              >
+            <div className={`items-wrapper style--${viewStyle}`}>
+              <div className={`toggle__btns d-flex flex-row-reverse`}>
                 <button
                   type="button"
                   data-tip="Dạng lưới"
@@ -73,7 +69,7 @@ export default function HomePageBody(props: Props) {
           </Col>
 
           <Col lg={3} className="d-none d-lg-block">
-            Column Here
+            <Sidebar items={items} />
           </Col>
         </div>
       </div>

@@ -20,16 +20,6 @@ export default class Header extends React.Component<Props, State> {
           <div className="header__top">
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
-                {/* <div className="top__contact">
-                  <span className="contact--phone white-text">
-                    <FontAwesomeIcon icon={faPhoneAlt} />
-                    <span>(408) 753 7979</span>
-                  </span>
-                  <span className="contact--mail white-text">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    <span>hello@thuenha.us</span>
-                  </span>
-                </div> */}
                 <div className="top__buttons">
                   <Button variant="outline-primary">Đăng tin mới</Button>
                 </div>
