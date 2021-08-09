@@ -7,7 +7,11 @@ export function sidebarBuilder(obj, type) {
   const listLI = arr.map(obj => {
     return (
       <li key={`${obj.from}-${obj.to}`}>
-        <Link to={`/?${type}=${obj.from}-${obj.to === null ? 0 : obj.to}`}>
+        <Link
+          to={`/collections/all?${type}=${obj.from}-${
+            obj.to === null ? 0 : obj.to
+          }`}
+        >
           <span dangerouslySetInnerHTML={{ __html: obj.label }}></span>
         </Link>
       </li>

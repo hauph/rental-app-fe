@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from 'react-bootstrap';
 import './Header.scss';
 import NavBar from '../NavBar/NavBar';
+import BaseModal from '../BaseModal/BaseModal';
 // import SearchBar from '../SearchBar/SearchBar';
 // import header_bg4 from './header_bg4.jpg';
 
@@ -10,6 +11,18 @@ type Props = {};
 type State = {};
 
 export default class Header extends React.Component<Props, State> {
+  refBaseModal;
+
+  constructor(props) {
+    super(props);
+
+    this.refBaseModal = React.createRef();
+  }
+
+  postNewFeed() {
+    this.refBaseModal.current.openModal();
+  }
+
   render() {
     return (
       <div className="header">
@@ -21,7 +34,12 @@ export default class Header extends React.Component<Props, State> {
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="top__buttons">
-                  <Button variant="outline-primary">Đăng tin mới</Button>
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => this.postNewFeed()}
+                  >
+                    Đăng tin mới
+                  </Button>
                 </div>
                 <NavBar />
               </div>
@@ -40,6 +58,8 @@ export default class Header extends React.Component<Props, State> {
             </form>
           </div>
         </div>
+
+        <BaseModal ref={this.refBaseModal}>Hello World</BaseModal>
       </div>
     );
   }
