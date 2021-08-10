@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn {
-    transition: 0.25s;
+    @include single-prefix(transition, 0.25s);
 
     &.btn-outline-primary {
         border: 2px solid var(--primary);
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
         &:hover {
             background-color: unset;
             box-shadow: 0 0.5em 0.5em -0.4em var(--primary);
-            transform: translateY(-0.25em);
+            @include single-prefix(transform, translateY(-0.25em));
         }
 
         &:focus {
@@ -55,6 +55,21 @@ h1, h2, h3, h4, h5, h6 {
 
             &:hover {
                 box-shadow: 0 0.5em 0.5em -0.4em var(--secondary);
+            }
+        }
+    }
+
+    &.btn-modal {
+        border-radius: 1rem;
+        min-width: 100px;
+
+        &.btn-success {
+            background-color: var(--secondary);
+            border: 1px solid var(--secondary);
+
+            &:hover {
+                background-color: #157347;
+                border-color: #146c43;
             }
         }
     }

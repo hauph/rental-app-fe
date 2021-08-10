@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import BaseForm from '../BaseForm/BaseForm';
+import './BaseModal.scss';
 
 type Props = {
   headerTitle?: string;
@@ -31,7 +33,7 @@ type State = {
 };
 
 export default class BaseModal extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     const {
@@ -45,16 +47,18 @@ export default class BaseModal extends React.Component<Props, State> {
       size,
     } = this.props;
 
+    // Set default values
     this.state = {
       isShow: false,
-      isLock: isLock || false,
-      isShowHeader: isShowHeader || false,
-      isShowFooter: isShowFooter || false,
-      footerSaveLabel: footerSaveLabel || 'Save',
-      footerCancelLabel: footerCancelLabel || 'Cancel',
-      centered: centered || false,
-      showCloseBtn: showCloseBtn || false,
-      size: size || 'lg',
+      isLock: isLock !== undefined ? isLock : false,
+      isShowHeader: isShowHeader !== undefined ? isShowHeader : false,
+      isShowFooter: isShowFooter !== undefined ? isShowFooter : false,
+      footerSaveLabel: footerSaveLabel !== undefined ? footerSaveLabel : 'Save',
+      footerCancelLabel:
+        footerCancelLabel !== undefined ? footerCancelLabel : 'Cancel',
+      centered: centered !== undefined ? centered : false,
+      showCloseBtn: showCloseBtn !== undefined ? showCloseBtn : false,
+      size: size !== undefined ? size : 'lg',
     };
   }
 
@@ -114,15 +118,26 @@ export default class BaseModal extends React.Component<Props, State> {
         )}
         {/* Body */}
         <Modal.Body>
-          <div className="modal-body-container">{this.props.children}</div>
+          <div className="modal-body-container">
+            {this.props.children}
+            {/* <BaseForm /> */}
+          </div>
         </Modal.Body>
         {/* Footer */}
         {isShowFooter && (
           <Modal.Footer className="modal-footer-action">
-            <Button variant="primary" onClick={this.handleSaveModal}>
+            <Button
+              variant="success"
+              className="btn-modal"
+              onClick={this.handleSaveModal}
+            >
               {footerSaveLabel}
             </Button>
-            <Button variant="outline-primary" onClick={this.closeModal}>
+            <Button
+              variant="secondary"
+              className="btn-modal"
+              onClick={this.closeModal}
+            >
               {footerCancelLabel}
             </Button>
           </Modal.Footer>
