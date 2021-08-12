@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import BaseForm from '../BaseForm/BaseForm';
 import './BaseModal.scss';
 
 type Props = {
@@ -118,10 +117,7 @@ export default class BaseModal extends React.Component<Props, State> {
         )}
         {/* Body */}
         <Modal.Body>
-          <div className="modal-body-container">
-            {this.props.children}
-            {/* <BaseForm /> */}
-          </div>
+          <div className="modal-body-container">{this.props.children}</div>
         </Modal.Body>
         {/* Footer */}
         {isShowFooter && (
