@@ -13,14 +13,6 @@ type Props = {
 
 type State = {};
 
-/* Sample formSettings */
-// {
-//   "name": {
-//       "initialValues": "abc",
-//       "schema": yup.string(),
-//   }
-// }
-
 export default class BaseForm extends React.Component<Props, State> {
   render() {
     const {
@@ -36,19 +28,15 @@ export default class BaseForm extends React.Component<Props, State> {
       initialValues[key] = formSettings[key].initialValues;
       formSchema[key] = formSettings[key].schema(yup);
     }
+    const Schema = yup.object().shape(formSchema);
 
-    console.log('formSettings', formSettings);
-    console.log('initialValues', initialValues);
-    console.log('formSchema', formSchema);
+    // console.log('formSchema', Schema);
     return (
       <Formik
         initialValues={initialValues}
-        validationSchema={() => {
-          yup.object().shape(formSchema);
-        }}
+        validationSchema={Schema}
         enableReinitialize={enableReinitialize ? enableReinitialize : false}
         onSubmit={(values, formikBag) => {
-          console.log('hau here');
           handleSubmit(values, formikBag);
         }}
         onReset={(values, formikBag) =>

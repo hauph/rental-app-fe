@@ -24,7 +24,7 @@ export function gridListBuilder(list, callbacks = {}, type = 'grid') {
     return (
       <div className="item__image">
         <div className="featured-img">
-          <a href={`/product?id=${item.property_id}`}>
+          <a href={`/product?id=${item.id}`}>
             <LazyLoad height={325}>
               <img src={item.images[0]} alt="" />
             </LazyLoad>
@@ -73,11 +73,11 @@ export function gridListBuilder(list, callbacks = {}, type = 'grid') {
       <div className="item__name">
         <h5>
           <a
-            title={item.name}
-            href={`/product?id=${item.property_id}`}
+            title={item.title}
+            href={`/product?id=${item.id}`}
             className="font-2"
           >
-            {item.name}
+            {item.title}
           </a>
         </h5>
       </div>
@@ -99,16 +99,11 @@ export function gridListBuilder(list, callbacks = {}, type = 'grid') {
   };
 
   const renderPrice = item => {
-    return (
-      <div className="item__price">${numberWithCommas(item.prices[0])}</div>
-    );
+    return <div className="item__price">${numberWithCommas(item.price)}</div>;
   };
 
   let content = list.map(item => (
-    <div
-      className="item-wrapper col-xl-4 col-md-6 col-sm-12"
-      key={item.property_id}
-    >
+    <div className="item-wrapper col-xl-4 col-md-6 col-sm-12" key={item.id}>
       <div className="item__head">
         {renderImage(item)}
         {renderBtns(item)}
@@ -124,7 +119,7 @@ export function gridListBuilder(list, callbacks = {}, type = 'grid') {
   ));
   if (type === 'list') {
     content = list.map(item => (
-      <div className="item-wrapper" key={item.property_id}>
+      <div className="item-wrapper" key={item.id}>
         <div className="d-flex">
           {renderImage(item)}
           <div className="item__content">
@@ -133,7 +128,7 @@ export function gridListBuilder(list, callbacks = {}, type = 'grid') {
                 {renderName(item)}
                 {renderLocaltion(item)}
                 <div className="item__type">
-                  <a href="true">{item.property_type}</a>
+                  <a href="true">{item.type}</a>
                 </div>
               </div>
               <div className="content__right">

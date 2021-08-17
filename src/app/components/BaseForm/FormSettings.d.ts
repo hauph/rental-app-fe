@@ -2,7 +2,7 @@ import { ObjectShape } from 'yup/lib/object';
 
 type FormSetting = {
   initialValues: any;
-  schema: ObjectShape;
+  schema: (yup: any) => ObjectShape;
 };
 
 export interface FormSettings {

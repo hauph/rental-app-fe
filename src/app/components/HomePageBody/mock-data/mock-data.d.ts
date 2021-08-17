@@ -1,21 +1,22 @@
 type item = {
-  property_id: string;
-  name: string;
+  id: string;
+  title: string;
   state: string;
   city: string;
   area: string;
-  code: number;
+  zipcode: string | number;
   description: string;
-  property_type: string;
-  prices: Array<number>;
-  property_status: string;
+  type: string;
+  price: number;
+  status: string;
   property_size: number | null;
   images: Array<string>;
-  features: Array<string>;
-  bathroom: number | null;
-  bedroom: number | null;
+  post_feature: Array<string>;
+  bathrooms: number | null;
+  bedrooms: number | null;
   created_at: string;
   updated_at: string;
+  phone: string;
 };
 
 export type items = Array<item>;

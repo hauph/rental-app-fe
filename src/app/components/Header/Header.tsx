@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from 'react-bootstrap';
 import './Header.scss';
 import NavBar from '../NavBar/NavBar';
-import BaseModal from '../BaseModal/BaseModal';
+import { ModalLogin } from '../ModalLogin/ModalLogin';
 // import SearchBar from '../SearchBar/SearchBar';
 // import header_bg4 from './header_bg4.jpg';
 
@@ -11,16 +11,16 @@ type Props = {};
 type State = {};
 
 export default class Header extends React.Component<Props, State> {
-  refBaseModal;
+  refModalLogin;
 
   constructor(props) {
     super(props);
 
-    this.refBaseModal = React.createRef();
+    this.refModalLogin = React.createRef();
   }
 
   postNewFeed() {
-    this.refBaseModal.current.openModal();
+    this.refModalLogin.current.openModal();
   }
 
   render() {
@@ -59,7 +59,7 @@ export default class Header extends React.Component<Props, State> {
           </div>
         </div>
 
-        <BaseModal ref={this.refBaseModal}>Hello World</BaseModal>
+        <ModalLogin refModalLogin={this.refModalLogin} />
       </div>
     );
   }
