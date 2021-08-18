@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import BaseModal from '../BaseModal/BaseModal';
-import BaseForm from '../BaseForm/BaseForm';
 import { Login } from './includes/Login';
 
 type Props = {
   refModalLogin: any;
 };
 
-type State = {};
+// type State = {};
 
 export const ModalLogin = (props: Props): JSX.Element => {
   const { refModalLogin } = props;
