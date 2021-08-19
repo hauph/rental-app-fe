@@ -81,3 +81,7 @@ h1, h2, h3, h4, h5, h6 {
         @include single-prefix(box-shadow, 0 2px 6px rgba(70, 80, 110, .2));
     }
 }
+
+.form-group {
+    margin-bottom: 20px;
+}

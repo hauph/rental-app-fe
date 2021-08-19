@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import BaseForm from '../../BaseForm/BaseForm';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Login.scss';
 
 type Props = {};
 
@@ -44,12 +45,21 @@ export const Login = (props: Props) => {
         <Form.Group className="form--password">
           <Form.Label>
             Mật khẩu
-            <span
-              className="password__toggler"
-              onClick={() => handleShowPass(!showPass)}
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip id="" className="custom-tooltip">
+                  {showPass ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                </Tooltip>
+              }
             >
-              <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
-            </span>
+              <span
+                className="password__toggler"
+                onClick={() => handleShowPass(!showPass)}
+              >
+                <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
+              </span>
+            </OverlayTrigger>
           </Form.Label>
           <Form.Control
             type={showPass ? 'text' : 'password'}
@@ -71,7 +81,7 @@ export const Login = (props: Props) => {
           />
         </Form.Group>
 
-        <Button type="submit" onClick={_props.handleSubmit}>
+        <Button type="submit" variant="success" onClick={_props.handleSubmit}>
           Đăng nhập
         </Button>
       </Form>
