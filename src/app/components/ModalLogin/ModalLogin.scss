@@ -1,6 +1,6 @@
 @import '../../../styles/scss/mixin.scss';
 
-.modal-login{
+.modal-login {
     .modal-dialog {
         max-width: 600px;
 
@@ -89,10 +89,16 @@
                 }
             }
         }
+
+        button {
+            width: 100%;
+            background-color: var(--secondary);
+            border-radius: 50px;
+        }
     }
 
     .btn--outside {
-        span {
+        a {
             color: var(--secondary);
             font-size: 13px;
             text-decoration: underline;

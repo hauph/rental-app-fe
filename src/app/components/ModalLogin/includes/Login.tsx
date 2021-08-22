@@ -3,7 +3,7 @@ import { Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import BaseForm from '../../BaseForm/BaseForm';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './Login.scss';
+// import './Login.scss';
 
 type Props = {};
 
@@ -27,13 +27,22 @@ export const Login = (props: Props) => {
   };
 
   const renderChildren = _props => {
+    const handleChange = (e, type) => {
+      _props.handleChange(e);
+      _props.setErrors({
+        ..._props.errors,
+        [type]: '',
+      });
+    };
     return (
       <Form id="signin-form" className="form">
         <Form.Group className="form--email">
-          <Form.Label>Tên người dùng hoặc E-mail</Form.Label>
+          <Form.Label>
+            Tên người dùng hoặc E-mail<span className="required">*</span>
+          </Form.Label>
           <Form.Control
             name="email"
-            onChange={_props.handleChange}
+            onChange={e => handleChange(e, 'email')}
             value={_props.values.email}
             isInvalid={_props.errors.email}
           />
@@ -44,7 +53,7 @@ export const Login = (props: Props) => {
 
         <Form.Group className="form--password">
           <Form.Label>
-            Mật khẩu
+            Mật khẩu<span className="required">*</span>
             <OverlayTrigger
               placement="top"
               overlay={
@@ -64,7 +73,7 @@ export const Login = (props: Props) => {
           <Form.Control
             type={showPass ? 'text' : 'password'}
             name="password"
-            onChange={_props.handleChange}
+            onChange={e => handleChange(e, 'password')}
             value={_props.values.password}
             isInvalid={_props.errors.password}
           />
@@ -73,7 +82,7 @@ export const Login = (props: Props) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="form--remember">
+        <Form.Group className="form--remember custom-check">
           <Form.Check
             type="checkbox"
             label="Lưu đăng nhập cho lần sau"
@@ -89,8 +98,8 @@ export const Login = (props: Props) => {
   };
 
   const handleSubmit = (values, formikBag) => {
-    console.log('submit', values);
-    console.log('submit', formikBag);
+    console.log('values', values);
+    console.log('formikBag', formikBag);
   };
 
   return (
@@ -98,6 +107,7 @@ export const Login = (props: Props) => {
       formSettings={formSettings}
       renderChildren={renderChildren}
       handleSubmit={handleSubmit}
+      validateOnChange={false}
     />
   );
 };

@@ -6,6 +6,9 @@ import { FormSettings } from './FormSettings';
 type Props = {
   formSettings: FormSettings;
   enableReinitialize?: boolean;
+  validateOnBlur?: boolean;
+  validateOnChange?: boolean;
+  validateOnMount?: boolean;
   handleReset?: (values: any, formikBag: any) => void;
   handleSubmit: (values: any, formikBag: any) => void;
   renderChildren: (props: object) => JSX.Element;
@@ -21,6 +24,9 @@ export default class BaseForm extends React.Component<Props, State> {
       handleReset,
       handleSubmit,
       renderChildren,
+      validateOnBlur,
+      validateOnChange,
+      validateOnMount,
     } = this.props;
     let initialValues = {},
       formSchema = {};
@@ -35,7 +41,16 @@ export default class BaseForm extends React.Component<Props, State> {
       <Formik
         initialValues={initialValues}
         validationSchema={Schema}
-        enableReinitialize={enableReinitialize ? enableReinitialize : false}
+        enableReinitialize={
+          enableReinitialize !== undefined ? enableReinitialize : false
+        }
+        validateOnBlur={validateOnBlur !== undefined ? validateOnBlur : true}
+        validateOnChange={
+          validateOnChange !== undefined ? validateOnChange : true
+        }
+        validateOnMount={
+          validateOnMount !== undefined ? validateOnMount : false
+        }
         onSubmit={(values, formikBag) => {
           handleSubmit(values, formikBag);
         }}
