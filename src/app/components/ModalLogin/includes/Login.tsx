@@ -27,13 +27,6 @@ export const Login = (props: Props) => {
   };
 
   const renderChildren = _props => {
-    const handleChange = (e, type) => {
-      _props.handleChange(e);
-      _props.setErrors({
-        ..._props.errors,
-        [type]: '',
-      });
-    };
     return (
       <Form id="signin-form" className="form">
         <Form.Group className="form--email">
@@ -42,7 +35,7 @@ export const Login = (props: Props) => {
           </Form.Label>
           <Form.Control
             name="email"
-            onChange={e => handleChange(e, 'email')}
+            onChange={_props.handleChange}
             value={_props.values.email}
             isInvalid={_props.errors.email}
           />
@@ -73,7 +66,7 @@ export const Login = (props: Props) => {
           <Form.Control
             type={showPass ? 'text' : 'password'}
             name="password"
-            onChange={e => handleChange(e, 'password')}
+            onChange={_props.handleChange}
             value={_props.values.password}
             isInvalid={_props.errors.password}
           />
@@ -87,6 +80,7 @@ export const Login = (props: Props) => {
             type="checkbox"
             label="Lưu đăng nhập cho lần sau"
             name="remember"
+            onChange={_props.handleChange}
           />
         </Form.Group>
 

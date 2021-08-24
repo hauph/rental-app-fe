@@ -30,7 +30,7 @@ export const NewAccount = (props: Props) => {
           .string()
           .matches(
             /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-            'Định dạng số điện thoại không đúng.',
+            'Số điện thoại không hợp lệ.',
           ),
     },
     email: {
@@ -56,13 +56,6 @@ export const NewAccount = (props: Props) => {
   };
 
   const renderChildren = _props => {
-    const handleChange = (e, type) => {
-      _props.handleChange(e);
-      _props.setErrors({
-        ..._props.errors,
-        [type]: '',
-      });
-    };
     return (
       <Form id="new-account-form" className="form">
         <Form.Group className="form--user-name">
@@ -71,7 +64,7 @@ export const NewAccount = (props: Props) => {
           </Form.Label>
           <Form.Control
             name="user_name"
-            onChange={e => handleChange(e, 'user_name')}
+            onChange={_props.handleChange}
             value={_props.values.user_name}
             isInvalid={_props.errors.user_name}
           />
@@ -86,7 +79,7 @@ export const NewAccount = (props: Props) => {
           </Form.Label>
           <Form.Control
             name="first_name"
-            onChange={e => handleChange(e, 'first_name')}
+            onChange={_props.handleChange}
             value={_props.values.first_name}
             isInvalid={_props.errors.first_name}
           />
@@ -101,7 +94,7 @@ export const NewAccount = (props: Props) => {
           </Form.Label>
           <Form.Control
             name="last_name"
-            onChange={e => handleChange(e, 'last_name')}
+            onChange={_props.handleChange}
             value={_props.values.last_name}
             isInvalid={_props.errors.last_name}
           />
@@ -114,7 +107,7 @@ export const NewAccount = (props: Props) => {
           <Form.Label>Số điện thoại</Form.Label>
           <Form.Control
             name="phone"
-            onChange={e => handleChange(e, 'phone')}
+            onChange={_props.handleChange}
             value={_props.values.phone}
             isInvalid={_props.errors.phone}
           />
@@ -130,7 +123,7 @@ export const NewAccount = (props: Props) => {
           <Form.Control
             type="email"
             name="email"
-            onChange={e => handleChange(e, 'email')}
+            onChange={_props.handleChange}
             value={_props.values.email}
             isInvalid={_props.errors.email}
           />
@@ -161,7 +154,7 @@ export const NewAccount = (props: Props) => {
           <Form.Control
             type={showPass1 ? 'text' : 'password'}
             name="password"
-            onChange={e => handleChange(e, 'password')}
+            onChange={_props.handleChange}
             value={_props.values.password}
             isInvalid={_props.errors.password}
           />
@@ -192,7 +185,7 @@ export const NewAccount = (props: Props) => {
           <Form.Control
             type={showPass2 ? 'text' : 'password'}
             name="re_password"
-            onChange={e => handleChange(e, 're_password')}
+            onChange={_props.handleChange}
             value={_props.values.re_password}
             isInvalid={
               _props.errors.re_password ||

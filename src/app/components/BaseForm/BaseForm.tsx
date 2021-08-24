@@ -17,13 +17,34 @@ type Props = {
 type State = {};
 
 export default class BaseForm extends React.Component<Props, State> {
+  renderElements(formikProps) {
+    const { validateOnChange, renderChildren } = this.props;
+
+    // Customize Formik's 'handleChange' function when 'validateOnChange' = false
+    if (validateOnChange === false) {
+      const cloneHandleChange = formikProps.handleChange;
+      formikProps = {
+        ...formikProps,
+        handleChange(e) {
+          const name = e.target.name;
+          cloneHandleChange(e);
+          formikProps.setErrors({
+            ...formikProps.errors,
+            [name]: '',
+          });
+        },
+      };
+    }
+
+    return renderChildren(formikProps);
+  }
+
   render() {
     const {
       formSettings,
       enableReinitialize,
       handleReset,
       handleSubmit,
-      renderChildren,
       validateOnBlur,
       validateOnChange,
       validateOnMount,
@@ -58,7 +79,7 @@ export default class BaseForm extends React.Component<Props, State> {
           handleReset ? handleReset(values, formikBag) : {}
         }
       >
-        {props => renderChildren(props)}
+        {formikProps => this.renderElements(formikProps)}
       </Formik>
     );
   }

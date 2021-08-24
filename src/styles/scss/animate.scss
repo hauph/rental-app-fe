@@ -1,0 +1,52 @@
+@import './mixin.scss';
+
+@keyframes fadeInUp {
+    from {
+        @include single-prefix(transform, translate3d(0,10px,0));
+    }
+
+    to {
+        @include single-prefix(transform, translate3d(0,0,0));
+        opacity: 1
+    }
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+@keyframes coverUp {
+    0% {
+        @include multi-prefix((
+            transform-origin: 50% 100%,
+            transform: scale3d(1, 0.045, 1)
+        ))
+    }
+
+    50% {
+        @include multi-prefix((
+            transform-origin: 50% 100%,
+            transform: scale3d(1, 1, 1)
+        ))
+    }
+
+    51% {
+        @include multi-prefix((
+            transform-origin: 50% 0%,
+            transform: scale3d(1, 1, 1)
+        ))
+    }
+
+    100% {
+        @include multi-prefix((
+            transform-origin: 50% 0%,
+            transform: scale3d(1, 0.045, 1)
+        ))
+    }
+}

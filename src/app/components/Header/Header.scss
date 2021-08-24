@@ -1,35 +1,5 @@
 @import '../../../styles/scss/mixin.scss';
 
-@keyframes coverUp {
-    0% {
-        @include multi-prefix((
-            transform-origin: 50% 100%,
-            transform: scale3d(1, 0.045, 1)
-        ))
-    }
-
-    50% {
-        @include multi-prefix((
-            transform-origin: 50% 100%,
-            transform: scale3d(1, 1, 1)
-        ))
-    }
-
-    51% {
-        @include multi-prefix((
-            transform-origin: 50% 0%,
-            transform: scale3d(1, 1, 1)
-        ))
-    }
-
-    100% {
-        @include multi-prefix((
-            transform-origin: 50% 0%,
-            transform: scale3d(1, 0.045, 1)
-        ))
-    }
-}
-
 .header {
     position: relative;
     background-image: url("./header_bg4.jpg");
@@ -95,42 +65,99 @@
             }
     
             .top__buttons {
-                .btn-link {
-                    color: var(--white);
-                    position: relative;
-                    text-decoration: none;
-                    padding: 0;
-                    margin: .375rem .75rem;
+                // .btn-link {
+                //     color: var(--primary);
+                //     position: relative;
+                //     text-decoration: none;
+                //     padding: 0;
+                //     margin-left: 10px;
+                //     display: inline-flex;
+                //     cursor: pointer;
 
-                    &::before, &::after {
-                        @include position-absolute(100%, n, n, 0);
-                        width: 100%;
-                        height: 1px;
-                        background: currentColor;
-                        pointer-events: none;
+                //     &::before, &::after {
+                //         @include position-absolute(100%, n, n, 0);
+                //         width: 100%;
+                //         height: 1px;
+                //         background: currentColor;
+                //         pointer-events: none;
+                //     }
+
+                //     &::before {
+                //         content: '';
+                //         height: 100%;
+                //         top: 0;
+                //         opacity: 0;
+                //     }
+
+                //     &::after {
+                //         content: '';
+                //         @include single-prefix(transition, opacity 0.3s);
+                //     }
+
+                //     &:hover {
+                //         &:before  {
+                //             opacity: 1;
+                //             animation: coverUp 0.3s ease forwards;
+                //             -webkit-animation: coverUp 0.3s ease forwards;
+                //         }    
+
+                //         &::after {
+                //             opacity: 0;
+                //         }
+                //     }
+
+                //     svg {
+                //         margin-left: 5px; 
+                //     }
+                // }
+
+                position: relative;
+
+                .user__dropdown {
+                    width: 200px;
+                    margin-top: 5px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    @include position-absolute(n,n,n,n);
+                    @include single-prefix(box-shadow, 0 0 5px var(--white));
+                    display: none;
+
+                    &.fadeInUp {
+                        display: block;
                     }
 
-                    &::before {
-                        content: '';
-                        height: 100%;
-                        top: 0;
-                        opacity: 0;
-                    }
+                    ul {
+                        list-style: none;
+                        padding: 15px;
+                        margin-bottom: 0;
 
-                    &::after {
-                        content: '';
-                        @include single-prefix(transition, opacity 0.3s);
-                    }
+                        li {
+                            cursor: pointer;
 
-                    &:hover {
-                        &:before  {
-                            opacity: 1;
-                            animation: coverUp 0.3s ease forwards;
-                            -webkit-animation: coverUp 0.3s ease forwards;
-                        }    
+                            a {
+                                padding: 10px 0;
+                                border-bottom: 1px solid #eee;
+                                display: block;
+                                color: var(--light-color);
+                                text-decoration: unset;
+                                @include single-prefix(transition, 0.25s);
 
-                        &::after {
-                            opacity: 0;
+                                svg {
+                                    margin-right: 5px;
+                                }
+                            }
+
+                            &:last-child {
+                                a {
+                                    border-bottom: unset;
+                                }
+                            }
+
+                            &:hover {
+                                a {
+                                    color: var(--secondary);
+                                }
+                            }
                         }
                     }
                 }

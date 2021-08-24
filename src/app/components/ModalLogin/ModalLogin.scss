@@ -51,7 +51,7 @@
             .form-label {
                 margin-bottom: 0;
                 font-size: 13px;
-                color: var(--secondary);
+                color: var(--light-color);
 
                 .password__toggler {
                     margin-left: 10px;
@@ -98,6 +98,8 @@
     }
 
     .btn--outside {
+        margin-top: 5px;
+        
         a {
             color: var(--secondary);
             font-size: 13px;
