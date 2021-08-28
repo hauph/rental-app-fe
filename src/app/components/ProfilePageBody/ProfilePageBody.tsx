@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+import BaseForm from '../BaseForm/BaseForm';
 import { Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import BaseForm from '../../BaseForm/BaseForm';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './ProfilePageBody.scss';
 
 type Props = {};
 
-export const NewAccount = (props: Props) => {
+export default function ProfilePageBody(props: Props) {
   const [showPass1, handleShowPass1] = useState<boolean>(false);
   const [showPass2, handleShowPass2] = useState<boolean>(false);
 
   const formSettings = {
     user_name: {
       initialValues: '',
-      schema: yup => yup.string().required('Vui lòng nhập tên người dùng.'),
+      schema: yup => yup.string(),
     },
     first_name: {
       initialValues: '',
@@ -35,19 +36,11 @@ export const NewAccount = (props: Props) => {
     },
     email: {
       initialValues: '',
-      schema: yup =>
-        yup
-          .string()
-          .required('Vui lòng nhập email.')
-          .matches(
-            // eslint-disable-next-line
-            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi,
-            'Email không hợp lệ.',
-          ),
+      schema: yup => yup.string(),
     },
     password: {
       initialValues: '',
-      schema: yup => yup.string().required('Vui lòng nhập mật khẩu.'),
+      schema: yup => yup.string(),
     },
     password_confirm: {
       initialValues: '',
@@ -65,20 +58,14 @@ export const NewAccount = (props: Props) => {
 
   const renderChildren = _props => {
     return (
-      <Form id="form--new-account" className="form form--custom">
+      <Form id="form--profile" className="form form--custom">
         <Form.Group className="form--user-name">
-          <Form.Label>
-            Tên người dùng<span className="required">*</span>
-          </Form.Label>
+          <Form.Label>Tên người dùng</Form.Label>
           <Form.Control
             name="user_name"
-            onChange={_props.handleChange}
             value={_props.values.user_name}
-            isInvalid={_props.errors.user_name}
+            readOnly={true}
           />
-          <Form.Control.Feedback type="invalid">
-            {_props.errors.user_name}
-          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="form--first-name">
@@ -113,24 +100,18 @@ export const NewAccount = (props: Props) => {
         </Form.Group>
 
         <Form.Group className="form--email">
-          <Form.Label>
-            Email<span className="required">*</span>
-          </Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             name="email"
-            onChange={_props.handleChange}
             value={_props.values.email}
-            isInvalid={_props.errors.email}
+            readOnly={true}
           />
-          <Form.Control.Feedback type="invalid">
-            {_props.errors.email}
-          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="form--password">
           <Form.Label>
-            Mật khẩu<span className="required">*</span>
+            Mật khẩu
             <OverlayTrigger
               placement="top"
               overlay={
@@ -161,7 +142,7 @@ export const NewAccount = (props: Props) => {
 
         <Form.Group className="form--re-password">
           <Form.Label>
-            Nhập lại mật khẩu<span className="required">*</span>
+            Nhập lại mật khẩu
             <OverlayTrigger
               placement="top"
               overlay={
@@ -191,7 +172,7 @@ export const NewAccount = (props: Props) => {
         </Form.Group>
 
         <Button type="submit" variant="success" onClick={_props.handleSubmit}>
-          Tạo tài khoản
+          Cập nhật tài khoản
         </Button>
       </Form>
     );
@@ -203,11 +184,16 @@ export const NewAccount = (props: Props) => {
   };
 
   return (
-    <BaseForm
-      formSettings={formSettings}
-      renderChildren={renderChildren}
-      handleSubmit={handleSubmit}
-      validateOnChange={false}
-    />
+    <div className="body">
+      <div className="container">
+        <h1 className="font-2">Cập nhật tài khoản</h1>
+        <BaseForm
+          formSettings={formSettings}
+          renderChildren={renderChildren}
+          handleSubmit={handleSubmit}
+          validateOnChange={false}
+        />
+      </div>
+    </div>
   );
-};
+}

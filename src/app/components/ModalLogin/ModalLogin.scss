@@ -46,55 +46,6 @@
 
     &__body {
         padding: 2rem;
-        
-        .form-group {
-            .form-label {
-                margin-bottom: 0;
-                font-size: 13px;
-                color: var(--light-color);
-
-                .password__toggler {
-                    margin-left: 10px;
-                    cursor: pointer;
-
-                    path {
-                        fill: var(--secondary);
-                    }
-                }
-            }
-
-            .form-control {
-                margin: 0;
-            }
-
-            input:not([type=checkbox]) {
-                border: none;
-                border-bottom: 1px solid var(--light-color);
-                border-radius: 0;
-                padding-right: 0px;
-                padding-left: 0px;
-                
-                &:focus {
-                    box-shadow: none;
-                }
-
-                &:-webkit-autofill,
-                &:-webkit-autofill:hover, 
-                &:-webkit-autofill:focus {
-                    @include single-prefix(transition, background-color 5000s ease-in-out 0s);
-                }
-
-                &.is-invalid {
-                    border-bottom-color: var(--third);
-                }
-            }
-        }
-
-        button {
-            width: 100%;
-            background-color: var(--secondary);
-            border-radius: 50px;
-        }
     }
 
     .btn--outside {

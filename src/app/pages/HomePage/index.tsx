@@ -13,11 +13,13 @@ export function HomePage() {
         <title>Home Page</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
-      <Header />
-      <HomePageBody />
-      <Footer />
-      <CompareFunction />
-      <ReactTooltip />
+      <div className="page-wrapper page--home">
+        <Header />
+        <HomePageBody />
+        <Footer />
+        <CompareFunction />
+        <ReactTooltip />
+      </div>
     </>
   );
 }

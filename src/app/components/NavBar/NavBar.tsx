@@ -8,14 +8,16 @@ type State = {};
 
 export default class NavBar extends React.Component<Props, State> {
   render() {
+    let activeKey: string = '/';
+
     return (
       <div className="header__navbar translate3d--000">
         <Nav
-          activeKey="/home"
+          activeKey={activeKey}
           onSelect={selectedKey => alert(`selected ${selectedKey}`)}
         >
           <Nav.Item>
-            <Nav.Link href="/home">Trang chủ</Nav.Link>
+            <Nav.Link href="/">Trang chủ</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>Phòng cho thuê</Nav.Link>

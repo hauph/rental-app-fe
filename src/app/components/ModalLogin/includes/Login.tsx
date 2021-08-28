@@ -28,7 +28,7 @@ export const Login = (props: Props) => {
 
   const renderChildren = _props => {
     return (
-      <Form id="signin-form" className="form">
+      <Form id="form--signin" className="form form--custom">
         <Form.Group className="form--email">
           <Form.Label>
             Tên người dùng hoặc E-mail<span className="required">*</span>
@@ -59,7 +59,7 @@ export const Login = (props: Props) => {
                 className="password__toggler"
                 onClick={() => handleShowPass(!showPass)}
               >
-                <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
+                <FontAwesomeIcon icon={showPass ? faEye : faEyeSlash} />
               </span>
             </OverlayTrigger>
           </Form.Label>

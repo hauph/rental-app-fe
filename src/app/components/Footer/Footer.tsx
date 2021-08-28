@@ -10,7 +10,7 @@ type State = {};
 export default class Footer extends React.Component<Props, State> {
   render() {
     return (
-      <div className="footer-wrapper">
+      <div className="footer">
         <div className="container text-center">
           <div className="contact d-flex justify-content-center">
             <p className="contact--phone white-text">
