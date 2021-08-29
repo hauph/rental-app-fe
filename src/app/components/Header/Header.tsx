@@ -100,7 +100,7 @@ export default class Header extends React.Component<Props, State> {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/profile">
+                            <Link to="/account">
                               <FontAwesomeIcon icon={faUser} /> Thông tin tài
                               khoản
                             </Link>

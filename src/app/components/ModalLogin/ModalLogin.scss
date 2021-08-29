@@ -47,15 +47,15 @@
     &__body {
         padding: 2rem;
     }
+}
 
-    .btn--outside {
-        margin-top: 5px;
-        
-        a {
-            color: var(--secondary);
-            font-size: 13px;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+.btn--outside {
+    margin-top: 5px;
+    
+    a {
+        color: var(--secondary);
+        font-size: 13px;
+        text-decoration: underline;
+        cursor: pointer;
     }
 }

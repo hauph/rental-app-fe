@@ -13,7 +13,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './pages/HomePage/Loadable';
-import { ProfilePage } from './pages/ProfilePage/Loadable';
+import { AccountPage } from './pages/AccountPage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 
@@ -31,7 +31,7 @@ export function App() {
 
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/account" component={AccountPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

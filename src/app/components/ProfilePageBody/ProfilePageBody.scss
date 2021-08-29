@@ -1,4 +1,6 @@
-.page--profile {
+@import '../../../styles/scss/mixin.scss';
+
+.page--account {
     h1 {
         margin-top: 40px;
     }
@@ -6,5 +8,28 @@
     #form--profile {
         width: 50%;
         margin: 0px auto 40px;
+
+        @media (max-width: 991px) {
+            width: 100%;
+        }
+
+        .form__profile, .form__password {
+            overflow: hidden;
+        }
+
+        .form__btn-password {
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
     }
+}
+
+.slide-up {
+    height: 0;
+    @include single-prefix(transition, height .5s ease-in-out);
+}
+
+.slide-down {
+    height: 430px !important;
+    @include single-prefix(transition, height .5s ease-in-out);
 }

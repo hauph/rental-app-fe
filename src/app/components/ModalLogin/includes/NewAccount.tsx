@@ -159,7 +159,7 @@ export const NewAccount = (props: Props) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="form--re-password">
+        <Form.Group className="form--password-confirm">
           <Form.Label>
             Nhập lại mật khẩu<span className="required">*</span>
             <OverlayTrigger
