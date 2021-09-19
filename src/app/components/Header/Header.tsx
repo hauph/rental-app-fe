@@ -12,23 +12,18 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { userData } from '../../interface/userData';
 // import SearchBar from '../SearchBar/SearchBar';
 // import header_bg4 from './header_bg4.jpg';
 
-type Props = {};
+type Props = {
+  userData: userData;
+};
 
 type State = {
   userDropdown: boolean;
 };
 
-const userMockData = {
-  id: 'user_1',
-  user_name: 'haupham',
-  first_name: ' Hau',
-  last_name: 'Pham',
-  phone: '',
-  email: 'hauph@hotmail.com',
-};
 export default class Header extends React.Component<Props, State> {
   refModalLogin;
 
@@ -52,7 +47,7 @@ export default class Header extends React.Component<Props, State> {
     });
   }
 
-  postNewFeed() {
+  login() {
     this.refModalLogin.current.openModal();
   }
 
@@ -62,6 +57,7 @@ export default class Header extends React.Component<Props, State> {
 
   render() {
     const { userDropdown } = this.state;
+    const { userData } = this.props;
 
     return (
       <div className="header">
@@ -73,7 +69,7 @@ export default class Header extends React.Component<Props, State> {
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="top__buttons">
-                  {/* {Object.keys(userMockData).length ? (
+                  {Object.keys(userData).length ? (
                     <div className="user--logged-in">
                       <Button
                         className="btn--user"
@@ -128,18 +124,18 @@ export default class Header extends React.Component<Props, State> {
                     <Button
                       className="btn--login"
                       variant="outline-primary"
-                      onClick={() => this.postNewFeed()}
+                      onClick={() => this.login()}
                     >
                       Đăng tin mới
                     </Button>
-                  )} */}
-                  <Button
+                  )}
+                  {/* <Button
                     className="btn--login"
                     variant="outline-primary"
-                    onClick={() => this.postNewFeed()}
+                    onClick={() => this.login()}
                   >
                     Đăng tin mới
-                  </Button>
+                  </Button> */}
                 </div>
                 <NavBar />
               </div>

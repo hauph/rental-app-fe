@@ -4,7 +4,9 @@ import BaseForm from '../../BaseForm/BaseForm';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type Props = {};
+type Props = {
+  onClose: () => void;
+};
 
 export const NewAccount = (props: Props) => {
   const [showPass1, handleShowPass1] = useState<boolean>(false);

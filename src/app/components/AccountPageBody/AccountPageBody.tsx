@@ -3,13 +3,20 @@ import BaseForm from '../BaseForm/BaseForm';
 import { Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './ProfilePageBody.scss';
+import './AccountPageBody.scss';
 import { FormSettings } from '../BaseForm/FormSettings';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import { userData } from '../../interface/userData';
 
-type Props = {};
+type Props = {
+  userData?: userData;
+};
 
-export default function ProfilePageBody(props: Props) {
+export default function AccountPageBody(props: Props) {
+  const { userData } = props;
+
+  // console.log(userData);
+  // console.log(process.env);
   const [showPass, handleShowPass] = useState<boolean>(false);
   const [showPass1, handleShowPass1] = useState<boolean>(false);
   const [showPass2, handleShowPass2] = useState<boolean>(false);
@@ -97,8 +104,9 @@ export default function ProfilePageBody(props: Props) {
           <Form.Group className="form--user-name">
             <Form.Label>Tên người dùng</Form.Label>
             <Form.Control
+              defaultValue={userData?.user_name}
               name="user_name"
-              value={_props.values.user_name}
+              // value={_props.values.user_name}
               readOnly={true}
             />
           </Form.Group>
@@ -262,7 +270,7 @@ export default function ProfilePageBody(props: Props) {
     console.log('values', values);
     console.log('formikBag', formikBag);
   };
-
+  console.log(userData?.user_name);
   return (
     <div className="body">
       <div className="container">

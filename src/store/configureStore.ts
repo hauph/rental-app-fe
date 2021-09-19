@@ -7,6 +7,9 @@ import { createInjectorsEnhancer } from 'redux-injectors';
 import createSagaMiddleware from 'redux-saga';
 
 import { createReducer } from './reducers';
+import auth from './userReducers';
+
+import { preloadedState } from './preloadedState/preloadedState';
 
 export function configureAppStore() {
   const reduxSagaMonitorOptions = {};
@@ -24,10 +27,13 @@ export function configureAppStore() {
   ];
 
   const store = configureStore({
-    reducer: createReducer(),
+    reducer: createReducer({
+      auth,
+    }),
     middleware: [...getDefaultMiddleware(), ...middlewares],
     devTools: process.env.NODE_ENV !== 'production',
     enhancers,
+    preloadedState,
   });
 
   return store;

@@ -39,7 +39,7 @@ export const ModalLogin = (props: Props): JSX.Element => {
       <div className="modal-login__body">
         {isLoginView ? (
           <div className="log-in">
-            <Login />
+            <Login onClose={() => refModalLogin.current.closeModal()} />
             <div className="btn--outside text-center">
               <span>
                 <Link to="/forget-password">Quên mật khẩu?</Link>
@@ -48,7 +48,7 @@ export const ModalLogin = (props: Props): JSX.Element => {
           </div>
         ) : (
           <div className="new-account">
-            <NewAccount />
+            <NewAccount onClose={() => refModalLogin.current.closeModal()} />
           </div>
         )}
       </div>
