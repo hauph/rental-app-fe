@@ -9,8 +9,8 @@ import { useDispatch } from 'react-redux';
 const userMockData = {
   id: 'user_1',
   user_name: 'haupham',
-  first_name: ' Hau',
-  last_name: 'Pham',
+  first_name: '',
+  last_name: '',
   phone: '',
   email: 'hauph@hotmail.com',
 };
@@ -106,7 +106,7 @@ export const Login = (props: Props) => {
   };
 
   const handleSubmit = (values, formikBag) => {
-    console.log('values', values);
+    // console.log('values', values);
     // console.log('formikBag', formikBag);
 
     // TODO:
@@ -119,6 +119,8 @@ export const Login = (props: Props) => {
     if (values.remember) {
       // save user data to localStorage
       localStorage.userData = JSON.stringify(userMockData);
+    } else {
+      sessionStorage.userData = JSON.stringify(userMockData);
     }
 
     props.onClose();

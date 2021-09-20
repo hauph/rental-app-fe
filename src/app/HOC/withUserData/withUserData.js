@@ -12,8 +12,10 @@ function withUserData(Component) {
     }
 
     componentDidMount() {
-      // Check if there is userData in localStorage
-      let ud = localStorage.userData;
+      // Check if there is userData in localStorage or sessionStorage
+      let ud = localStorage.userData
+        ? localStorage.userData
+        : sessionStorage.userData;
       if (ud) {
         ud = JSON.parse(ud);
         // Save userData to Redux and setState

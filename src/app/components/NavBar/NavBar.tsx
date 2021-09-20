@@ -18,9 +18,9 @@ export default class NavBar extends React.Component<Props, State> {
           onSelect={selectedKey => alert(`selected ${selectedKey}`)}
         >
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/">Trang chủ</Link>
-            </Nav.Link>
+            <Link className="nav-link" to="/">
+              Trang chủ
+            </Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>Phòng cho thuê</Nav.Link>

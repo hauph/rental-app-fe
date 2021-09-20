@@ -15,8 +15,6 @@ type Props = {
 export default function AccountPageBody(props: Props) {
   const { userData } = props;
 
-  // console.log(userData);
-  // console.log(process.env);
   const [showPass, handleShowPass] = useState<boolean>(false);
   const [showPass1, handleShowPass1] = useState<boolean>(false);
   const [showPass2, handleShowPass2] = useState<boolean>(false);
@@ -32,19 +30,19 @@ export default function AccountPageBody(props: Props) {
 
   let formSettings: FormSettings = {
     user_name: {
-      initialValues: '',
+      initialValues: userData?.user_name,
       schema: yup => yup.string(),
     },
     first_name: {
-      initialValues: '',
+      initialValues: userData?.first_name,
       schema: yup => yup.string(),
     },
     last_name: {
-      initialValues: '',
+      initialValues: userData?.last_name,
       schema: yup => yup.string(),
     },
     phone: {
-      initialValues: '',
+      initialValues: userData?.phone,
       schema: yup =>
         yup
           .string()
@@ -54,7 +52,7 @@ export default function AccountPageBody(props: Props) {
           ),
     },
     email: {
-      initialValues: '',
+      initialValues: userData?.email,
       schema: yup => yup.string(),
     },
   };
@@ -104,9 +102,8 @@ export default function AccountPageBody(props: Props) {
           <Form.Group className="form--user-name">
             <Form.Label>Tên người dùng</Form.Label>
             <Form.Control
-              defaultValue={userData?.user_name}
               name="user_name"
-              // value={_props.values.user_name}
+              value={_props.values.user_name}
               readOnly={true}
             />
           </Form.Group>
@@ -270,7 +267,7 @@ export default function AccountPageBody(props: Props) {
     console.log('values', values);
     console.log('formikBag', formikBag);
   };
-  console.log(userData?.user_name);
+
   return (
     <div className="body">
       <div className="container">

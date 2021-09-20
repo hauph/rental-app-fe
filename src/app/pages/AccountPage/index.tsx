@@ -8,37 +8,63 @@ import { userData } from '../../interface/userData';
 
 type Props = {
   userData: userData;
+  history: any;
 };
 
 type State = {
-  pageBodyChecker: boolean;
+  shouldGoHome: number;
 };
-
+let i = 0;
 class AccountPage extends React.Component<Props, State> {
   constructor(props) {
     super(props);
-
     this.state = {
-      pageBodyChecker: false, // Should re-render AccountPageBody to apply user data (if there is)
+      // if shouldGoHome reaches number 2, it means there is no user data and thus we need to go to home page
+      shouldGoHome: 0,
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
-    const { userData } = props;
-    const { pageBodyChecker } = state;
+  // componentDidMount() {
+  //   const { userData, history } = this.props;
+  //   setTimeout(() => {
+  //     if (!Object.keys(userData).length) {
+  //       // Go to home page when there is no user data in Redux store
+  //       history.push('/');
+  //     }
+  //   }, 1000);
+  // }
 
-    if (Object.keys(userData).length && !pageBodyChecker) {
-      return {
-        pageBodyChecker: true,
-      };
+  static getDerivedStateFromProps(props, state) {
+    const { userData, history } = props;
+    const { shouldGoHome } = state;
+    if (!Object.keys(userData).length) {
+      i += 1;
+      // return {
+      //   shouldGoHome: shouldGoHome + 1,
+      // };
+    } else {
+      i = 3;
     }
 
+    setTimeout(() => {
+      if (i === 2) {
+        history.push('/');
+      }
+    }, 500);
+
+    console.log('here', i);
     return null;
   }
 
   render() {
-    const { userData } = this.props;
-    const { pageBodyChecker } = this.state;
+    const { userData, history } = this.props;
+    const { shouldGoHome } = this.state;
+
+    // if (i === 2) {
+    //   // history.push('/');
+    // } else {
+    //   i = 0;
+    // }
 
     return (
       <>
@@ -48,11 +74,7 @@ class AccountPage extends React.Component<Props, State> {
         </Helmet>
         <div className="page-wrapper page--account">
           <Header userData={userData} />
-          {pageBodyChecker ? (
-            <AccountPageBody userData={userData} />
-          ) : (
-            <AccountPageBody />
-          )}
+          <AccountPageBody userData={userData} />
           <Footer />
         </div>
       </>

@@ -22,6 +22,7 @@ type Props = {
 
 type State = {
   userDropdown: boolean;
+  isHome: boolean;
 };
 
 export default class Header extends React.Component<Props, State> {
@@ -32,6 +33,7 @@ export default class Header extends React.Component<Props, State> {
 
     this.state = {
       userDropdown: false,
+      isHome: true,
     };
 
     this.refModalLogin = React.createRef();
@@ -45,6 +47,11 @@ export default class Header extends React.Component<Props, State> {
         _this.setState({ userDropdown: false });
       }
     });
+
+    const href = window.location.href;
+    if (process.env.REACT_APP_URL !== href) {
+      this.setState({ isHome: false });
+    }
   }
 
   login() {
@@ -56,7 +63,7 @@ export default class Header extends React.Component<Props, State> {
   }
 
   render() {
-    const { userDropdown } = this.state;
+    const { userDropdown, isHome } = this.state;
     const { userData } = this.props;
 
     return (
@@ -81,7 +88,7 @@ export default class Header extends React.Component<Props, State> {
                       <div
                         className={`user__dropdown${
                           userDropdown ? ' fadeInUp' : ''
-                        }`}
+                        } home--${isHome}`}
                       >
                         <ul>
                           <li>
@@ -129,13 +136,6 @@ export default class Header extends React.Component<Props, State> {
                       Đăng tin mới
                     </Button>
                   )}
-                  {/* <Button
-                    className="btn--login"
-                    variant="outline-primary"
-                    onClick={() => this.login()}
-                  >
-                    Đăng tin mới
-                  </Button> */}
                 </div>
                 <NavBar />
               </div>

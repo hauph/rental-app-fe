@@ -85,6 +85,10 @@
                         &.fadeInUp {
                             display: block;
                         }
+
+                        &.fadeInUp {
+                            @include single-prefix(box-shadow, 0 0 5px var(--border));
+                        }
     
                         ul {
                             list-style: none;
