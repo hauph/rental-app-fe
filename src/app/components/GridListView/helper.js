@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { numberWithCommas } from '../../../utils/helper';
+import { numberWithCommas } from '../../../utils/functions';
 
 /**
  * A factory function for rendering grid list items

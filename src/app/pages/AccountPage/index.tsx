@@ -11,60 +11,25 @@ type Props = {
   history: any;
 };
 
-type State = {
-  shouldGoHome: number;
-};
-let i = 0;
+type State = {};
+
 class AccountPage extends React.Component<Props, State> {
   constructor(props) {
     super(props);
-    this.state = {
-      // if shouldGoHome reaches number 2, it means there is no user data and thus we need to go to home page
-      shouldGoHome: 0,
-    };
+    this.state = {};
   }
-
-  // componentDidMount() {
-  //   const { userData, history } = this.props;
-  //   setTimeout(() => {
-  //     if (!Object.keys(userData).length) {
-  //       // Go to home page when there is no user data in Redux store
-  //       history.push('/');
-  //     }
-  //   }, 1000);
-  // }
 
   static getDerivedStateFromProps(props, state) {
     const { userData, history } = props;
-    const { shouldGoHome } = state;
     if (!Object.keys(userData).length) {
-      i += 1;
-      // return {
-      //   shouldGoHome: shouldGoHome + 1,
-      // };
-    } else {
-      i = 3;
+      history.push('/');
     }
 
-    setTimeout(() => {
-      if (i === 2) {
-        history.push('/');
-      }
-    }, 500);
-
-    console.log('here', i);
     return null;
   }
 
   render() {
-    const { userData, history } = this.props;
-    const { shouldGoHome } = this.state;
-
-    // if (i === 2) {
-    //   // history.push('/');
-    // } else {
-    //   i = 0;
-    // }
+    const { userData } = this.props;
 
     return (
       <>

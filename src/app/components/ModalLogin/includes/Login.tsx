@@ -4,6 +4,7 @@ import BaseForm from '../../BaseForm/BaseForm';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
+import { setCookie } from '../../../../utils/functions';
 // import './Login.scss';
 
 const userMockData = {
@@ -120,7 +121,7 @@ export const Login = (props: Props) => {
       // save user data to localStorage
       localStorage.userData = JSON.stringify(userMockData);
     } else {
-      sessionStorage.userData = JSON.stringify(userMockData);
+      setCookie('userData', JSON.stringify(userMockData), 1);
     }
 
     props.onClose();
