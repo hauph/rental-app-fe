@@ -7,53 +7,61 @@ function withUserData(Component) {
     constructor(props) {
       super(props);
 
+      const { saveUserData, userData } = this.props;
+
       let ud = localStorage.userData
         ? localStorage.userData
         : getCookie('userData');
       if (ud && ud.length) {
         ud = JSON.parse(ud);
         // Save userData to Redux and setState
-        this.props.saveUserData(ud);
+        saveUserData(ud);
       }
 
       this.state = {
-        // If ud is available, it means user is logging in, therefor shouldCleanUserData needs to be set to 1
-        // to prepare for case when user logs out or user data is not valid anymore
-        shouldCleanUserData: ud && ud.length ? 1 : 0,
+        // If ud is available, it means user is logging in, therefor shouldCleanUserData needs to be set to 1 to prepare for case when user logs out or user data is not valid anymore
+        shouldCleanUserData:
+          (ud && ud.length) || Object.keys(userData).length ? 1 : 0,
       };
     }
 
     static getDerivedStateFromProps(props, state) {
       const udLS = localStorage.userData;
       const udCookie = getCookie('userData');
-      const { saveUserData, userData } = props;
+      const { saveUserData } = props;
       const { shouldCleanUserData } = state;
 
-      console.log('udLS', udLS);
-      console.log('udCookie', udCookie);
-      console.log('shouldCleanUserData', shouldCleanUserData);
+      // console.log('userData', userData);
+      // console.log('udLS', udLS);
+      // console.log('udCookie', udCookie);
+      // console.log('shouldCleanUserData', shouldCleanUserData);
+      // console.log('=============');
+
       // Remove user data
       if (!udLS && !udCookie.length && shouldCleanUserData) {
-        console.log('here');
         saveUserData({});
         return {
           shouldCleanUserData: 0,
         };
-      } else if (!udLS && !udCookie.length) {
-        return {
-          shouldCleanUserData: 1,
-        };
-      } else if (Object.keys(userData).length && !shouldCleanUserData) {
-        return {
-          shouldCleanUserData: 1,
-        };
       }
+      // else if (!udLS && !udCookie.length && !shouldCleanUserData) {
+      //   saveUserData({});
+      //   return {
+      //     shouldCleanUserData: 1,
+      //   };
+      // }
+      // else if (Object.keys(userData).length && !shouldCleanUserData) {
+      //   console.log('here');
+      //   return {
+      //     shouldCleanUserData: 1,
+      //   };
+      // }
 
       return null;
     }
 
     render() {
-      console.log(this.props.userData);
+      // console.log(this.props.userData);
       return <Component userData={this.props.userData} {...this.props} />;
     }
   }
