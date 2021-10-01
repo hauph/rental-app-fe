@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './AccountPageBody.scss';
 import { FormSettings } from '../BaseForm/FormSettings';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import { userData } from '../../interface/userData';
+import userData from '../../interface/userData';
 
 type Props = {
   userData?: userData;

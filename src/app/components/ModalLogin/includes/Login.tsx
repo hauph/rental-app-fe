@@ -119,7 +119,7 @@ export const Login = (props: Props) => {
 
     if (values.remember) {
       // save user data to localStorage
-      localStorage.userData = JSON.stringify(userMockData);
+      localStorage.setItem('userData', JSON.stringify(userMockData));
     } else {
       setCookie('userData', JSON.stringify(userMockData), 1);
     }

@@ -8,10 +8,9 @@ function withUserData(Component) {
       super(props);
 
       const { saveUserData, userData } = this.props;
+      const udLS = localStorage.getItem('userData');
 
-      let ud = localStorage.userData
-        ? localStorage.userData
-        : getCookie('userData');
+      let ud = udLS ? udLS : getCookie('userData');
       if (ud && ud.length) {
         ud = JSON.parse(ud);
         // Save userData to Redux and setState
@@ -26,7 +25,7 @@ function withUserData(Component) {
     }
 
     static getDerivedStateFromProps(props, state) {
-      const udLS = localStorage.userData;
+      const udLS = localStorage.getItem('userData');
       const udCookie = getCookie('userData');
       const { saveUserData } = props;
       const { shouldCleanUserData } = state;

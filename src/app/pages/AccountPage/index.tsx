@@ -5,7 +5,8 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import AccountPageBody from '../../components/AccountPageBody/AccountPageBody';
 import withUserData from '../../HOC/withUserData/withUserData';
-import { userData } from '../../interface/userData';
+import userData from '../../interface/userData';
+import noUserData from '../../interface/noUserData';
 
 type Props = {
   userData: userData;
@@ -13,18 +14,20 @@ type Props = {
 };
 
 type State = {
+  shouldRedirect: boolean;
   counter: number;
   _userData: userData;
 };
 
-class AccountPage extends React.Component<Props, State> {
+class AccountPage extends React.Component<Props, State> implements noUserData {
   // This is used to check whether we update this page or redirect to home page
   timerID;
 
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0,
+      shouldRedirect: false,
+      counter: 0, // Set a counter here because we dont want this component to keep re-rendering
       _userData: JSON.parse(JSON.stringify(this.props.userData)), // Clone userData from props
     };
   }
@@ -46,14 +49,22 @@ class AccountPage extends React.Component<Props, State> {
 
   count() {
     const { userData } = this.props;
+    const { counter } = this.state;
     if (Object.keys(userData).length) {
       this.setState({
-        counter: 0,
+        shouldRedirect: false,
+        counter: counter + 1,
       });
     } else {
       this.setState({
-        counter: 1,
+        shouldRedirect: true,
+        counter: counter + 1,
       });
+    }
+
+    // If counter + 1 === 2, we should apply clearInterval for good performance
+    if (counter + 1 === 2) {
+      clearInterval(this.timerID);
     }
   }
 
@@ -63,16 +74,16 @@ class AccountPage extends React.Component<Props, State> {
 
   render() {
     const { userData } = this.props;
-    const { counter } = this.state;
+    const { shouldRedirect } = this.state;
     return (
       <>
-        {counter ? (
+        {shouldRedirect ? (
           <Redirect to="/" />
         ) : (
           <>
             <Helmet>
-              <title>Profile page</title>
-              <meta name="description" content="Profile page" />
+              <title>Account page</title>
+              <meta name="description" content="Account page" />
             </Helmet>
             <div className="page-wrapper page--account">
               <Header userData={userData} />

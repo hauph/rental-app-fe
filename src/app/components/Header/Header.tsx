@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.scss';
@@ -12,12 +13,14 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { userData } from '../../interface/userData';
+import userData from '../../interface/userData';
+import { getCookie, setCookie } from '../../../utils/functions';
 // import SearchBar from '../SearchBar/SearchBar';
 // import header_bg4 from './header_bg4.jpg';
 
 type Props = {
   userData: userData;
+  saveUserData: (userData: Object | userData) => void;
 };
 
 type State = {
@@ -25,7 +28,7 @@ type State = {
   isHome: boolean;
 };
 
-export default class Header extends React.Component<Props, State> {
+class Header extends React.Component<Props, State> {
   refModalLogin;
 
   constructor(props) {
@@ -56,6 +59,25 @@ export default class Header extends React.Component<Props, State> {
 
   login() {
     this.refModalLogin.current.openModal();
+  }
+
+  logout(e) {
+    // TODO: send request to BE to clear userData and session when logging out
+
+    e.preventDefault();
+
+    // Clear userData in localStorage
+    if (localStorage.getItem('userData')) {
+      localStorage.removeItem('userData');
+    }
+
+    // Clear userData in cookie
+    if (getCookie('userData')) {
+      setCookie('userData', '', 0);
+    }
+
+    // Clear userData in redux store
+    this.props.saveUserData({});
   }
 
   showUserDropdown() {
@@ -120,9 +142,9 @@ export default class Header extends React.Component<Props, State> {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/logout">
+                            <a href="/logout" onClick={e => this.logout(e)}>
                               <FontAwesomeIcon icon={faSignOutAlt} /> Thoát
-                            </Link>
+                            </a>
                           </li>
                         </ul>
                       </div>
@@ -160,3 +182,13 @@ export default class Header extends React.Component<Props, State> {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // dispatching plain action for saving user data
+    saveUserData: userData =>
+      dispatch({ type: 'SAVE_USER', payload: userData }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Header);

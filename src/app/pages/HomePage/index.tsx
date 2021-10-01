@@ -6,7 +6,7 @@ import HomePageBody from '../../components/HomePageBody/HomePageBody';
 import Footer from '../../components/Footer/Footer';
 import CompareFunction from '../../components/CompareFunction/CompareFunction';
 import withUserData from '../../HOC/withUserData/withUserData';
-import { userData } from '../../interface/userData';
+import userData from '../../interface/userData';
 
 type Props = {
   userData: userData;
